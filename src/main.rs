@@ -2,7 +2,7 @@
 
 use chrono::prelude::*;
 use chrono::Duration;
-use redux_rs::{Store, Subscription};
+use redux_rs::{Store};
 use std::boxed::Box;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -62,7 +62,7 @@ impl<'a> From<SimpleAction> for Action<'a> {
 fn root_reducer(state: &State, action: &Action) -> State {
     match action {
         // Travel: Move the player forward by distance and move the date forward by days
-        Action::Travel(days, distance) => State {
+        Action::Travel(days, distance) => State {ng)
             date: state.date + *days,
             miles: state.miles - *distance,
             ..*state
@@ -116,7 +116,7 @@ fn main() {
 
     // Store user input in user_input
     match io::stdin().read_line(&mut user_input) {
-        Ok(string) => match &user_input[..] {
+        Ok(_) => match &user_input[..] {
             "travel" => &store.dispatch(Action::Travel(
                 // Random number between three and seven
                 Duration::days(rand::thread_rng().gen_range(3, 7)),
