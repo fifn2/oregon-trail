@@ -122,7 +122,7 @@ fn main() {
                 Duration::days(rand::thread_rng().gen_range(3, 7)),
                 rand::thread_rng().gen_range(30, 60),
             )),
-            action => &println!("Uh oh! My creator tried, but was unable to implement action {}. I've been kind of a pain.", action)
+            _ => &println!("Uh oh! My creator tried, but was unable to implement that action. I've been kind of a pain.")
         },
         Err(error) => &println!(
             "Hmm, you put something really weird in here. The Rust language gave the error {}.",
