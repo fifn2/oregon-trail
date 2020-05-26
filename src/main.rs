@@ -108,7 +108,7 @@ fn main() {
         health: 5,
         hunt_days: 2,
     };
-    let store = Store::new(root_reducer, inital_state);
+    let mut store = Store::new(root_reducer, inital_state);
 
     let mut user_input = String::new();
 
@@ -117,14 +117,14 @@ fn main() {
     // Store user input in user_input
     match io::stdin().read_line(&mut user_input) {
         Ok(string) => match &user_input[..] {
-            "travel" => store.dispatch(Action::Travel(
+            "travel" => &store.dispatch(Action::Travel(
                 // Random number between three and seven
                 Duration::days(rand::thread_rng().gen_range(3, 7)),
                 rand::thread_rng().gen_range(30, 60),
             )),
-            action => println!("Uh oh! My creator tried, but was unable to implement action {}. I've been kind of a pain.", action)
+            action => &println!("Uh oh! My creator tried, but was unable to implement action {}. I've been kind of a pain.", action)
         },
-        Err(error) => println!(
+        Err(error) => &println!(
             "Hmm, you put something really weird in here. The Rust language gave the error {}.",
             error
         ),
